@@ -1,0 +1,26 @@
+<article class="card h-100">
+  <header>
+    <img [src]="user()?.image" class="card-img-top" [alt]="user()?.first_name + ' ' + user()?.last_name"/>
+  </header>
+  
+  <div class="card-body pb-0 pb-xl-3">
+    <h2 class="card-title h5 text-center">{{user()?.first_name + " " + user()?.last_name}}</h2>
+  </div>
+
+  <footer class="px-3 pb-3 d-flex justify-content-between">
+    <a [routerLink]="'user/' + user()?._id" class="text-reset text-decoration-none d-flex flex-column align-items-center">
+      <i class="bi bi-search mb-0 h4"></i>
+      <span>Ver</span>
+    </a>
+
+    <a [routerLink]="'updateuser/' + user()?._id" class="text-reset text-decoration-none d-flex flex-column align-items-center">
+      <i class="bi bi-arrow-repeat mb-0 h4"></i>
+      <span>Actualizar</span>
+    </a>
+
+    <button type="button" (click)="removeUser(user()?._id)" role="button" class="btn p-0 d-flex flex-column align-items-center">
+      <i class="bi bi-trash mb-0 h4"></i>
+      <span>Borrar</span>
+    </button>
+  </footer>
+</article>
