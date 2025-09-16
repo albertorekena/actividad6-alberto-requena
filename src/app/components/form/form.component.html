@@ -1,0 +1,59 @@
+<form [formGroup]="userForm" (ngSubmit)="getFormData()" class="mb-5">
+	<div class="mb-3">
+		<label class="form-label mb-1" for="first_name">Nombre Usuario</label>
+		<input class="form-control" id="first_name" type="text" placeholder="Introduzca nombre de usuario" formControlName="first_name" autocomplete="off">
+		@if(!checkControl("first_name", "required") && !checkControl("first_name", "minlength")) {
+		<p class="mb-0 form-text text-danger fst-italic">&nbsp;</p>
+		}
+		@if(checkControl("first_name", "required")) {
+		<p class="mb-0 form-text text-danger fst-italic">El nombre es obligatorio</p>
+		}
+		@if(checkControl("first_name", "minlength")) {
+		<p class="mb-0 form-text text-danger fst-italic">La longitud del nombre es de mínimo 3 caracteres</p>
+		}
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label mb-1" for="last_name">Apellido Usuario</label>
+		<input class="form-control" id="last_name" type="text" placeholder="Introduzca apellido de usuario" formControlName="last_name" autocomplete="off">
+		@if(!checkControl("last_name", "required") && !checkControl("last_name", "minlength")) {
+		<p class="mb-0 form-text text-danger fst-italic">&nbsp;</p>
+		}
+		@if(checkControl("last_name", "required")) {
+		<p class="mb-0 form-text text-danger fst-italic">El apellido es obligatorio</p>
+		}
+		@if(checkControl("last_name", "minlength")) {
+		<p class="mb-0 form-text text-danger fst-italic">La longitud del apellido es de mínimo 3 caracteres</p>
+		}
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label mb-1" for="email">Email Usuario</label>
+		<input class="form-control" id="email" type="email" placeholder="Introduzca email de usuario" formControlName="email" autocomplete="off">
+		@if(!checkControl("email", "required") && !checkControl("email", "pattern")) {
+		<p class="mb-0 form-text text-danger fst-italic">&nbsp;</p>
+		}
+		@if(checkControl("email", "required")) {
+		<p class="mb-0 form-text text-danger fst-italic">El email es obligatorio</p>
+		}
+		@if(checkControl("email", "pattern")) {
+		<p class="mb-0 form-text text-danger fst-italic">El email tiene que ser válido</p>
+		}
+	</div>
+
+	<div class="mb-3">
+		<label class="form-label mb-1" for="image">Imagen Usuario</label>
+		<input class="form-control" id="image" type="url" placeholder="Introduzca url de foto usuario" formControlName="image" autocomplete="off">
+		@if(!checkControl("image", "required") && !checkControl("image", "pattern")) {
+		<p class="mb-0 form-text text-danger fst-italic">&nbsp;</p>
+		}
+		@if(checkControl("image", "required")) {
+		<p class="mb-0 form-text text-danger fst-italic">La imagen es obligatoria</p>
+		}
+		@if(checkControl("image", "pattern")) {
+		<p class="mb-0 form-text text-danger fst-italic">La imagen tiene que ser una url</p>
+		}
+	</div>
+
+	<input type="submit" value="Guardar" class="btn bg-transparent p-3 btn-outline-dark mt-2" [class.pointer-disabled]="userForm.invalid" [disabled]="userForm.invalid">
+</form>
