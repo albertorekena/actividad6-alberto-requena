@@ -1,5 +1,7 @@
-import {Component} from "@angular/core";
+import {Component, inject} from "@angular/core";
 import {ReactiveFormsModule, FormControl, FormGroup, Validators} from "@angular/forms";
+import {UsersService} from "../../services/users.service";
+import { IUser } from "../../interfaces/iuser";
 
 @Component({
   selector:"app-new-user",
@@ -9,6 +11,7 @@ import {ReactiveFormsModule, FormControl, FormGroup, Validators} from "@angular/
 })
 export class NewUserComponent {
   userForm:FormGroup;
+  usersService = inject(UsersService);
 
   constructor() {
     this.userForm = new FormGroup({
@@ -35,5 +38,11 @@ export class NewUserComponent {
     return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched;
   }
 
-  getFormData():void {}
+  async getFormData():Promise<IUser | string> {
+    const user:IUser | string = await this.usersService.store(this.userForm.value);
+
+    console.log(user);
+
+    return user;
+  }
 };

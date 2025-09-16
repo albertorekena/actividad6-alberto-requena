@@ -18,4 +18,8 @@ export class UsersService {
   show(_id:string):Promise<IUser> {
     return lastValueFrom(this.httpClient.get<IUser>(this.baseUrl + "/" + _id));
   }
+
+  store(user:IUser):Promise<IUser | string> {
+    return lastValueFrom(this.httpClient.post<IUser>(this.baseUrl, user));
+  }
 };
