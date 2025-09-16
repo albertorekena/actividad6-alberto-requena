@@ -1,1 +1,49 @@
-<p>new-user works!</p>
+<h2 class="h3 my-5 text-uppercase fw-normal">Nuevo Usuario</h2>
+
+<form [formGroup]="userForm" (ngSubmit)="getFormData()" class="mb-5">
+	<div class="mb-4">
+		<label class="form-label" for="first_name">Nombre Usuario</label>
+		<input class="form-control" id="first_name" type="text" placeholder="Introduzca nombre de usuario" formControlName="first_name">
+		@if(checkControl("first_name", "required")) {
+		<p class="error">El nombre es obligatorio</p>
+		}
+		@if(checkControl("first_name", "minlength")) {
+		<p class="error">La longitud del nombre es de mínimo 3 caracteres</p>
+		}
+	</div>
+
+	<div class="mb-4">
+		<label class="form-label" for="last_name">Apellido Usuario</label>
+		<input class="form-control" id="last_name" type="text" placeholder="Introduzca apellido de usuario" formControlName="last_name">
+		@if(checkControl("last_name", "required")) {
+		<p class="error">El apellido es obligatorio</p>
+		}
+		@if(checkControl("last_name", "minlength")) {
+		<p class="error">La longitud del apellido es de mínimo 3 caracteres</p>
+		}
+	</div>
+
+	<div class="mb-4">
+		<label class="form-label" for="email">Email Usuario</label>
+		<input class="form-control" id="email" type="text" placeholder="Introduzca email de usuario" formControlName="email">
+		@if(checkControl("email", "required")) {
+		<p class="error">El email es obligatorio</p>
+		}
+		@if(checkControl("email", "pattern")) {
+		<p class="error">El email tiene que ser válido</p>
+		}
+	</div>
+
+	<div class="mb-4">
+		<label class="form-label" for="email">Imagen Usuario</label>
+		<input class="form-control" id="email" type="text" placeholder="Introduzca url de foto usuario" formControlName="email">
+		@if(checkControl("email", "required")) {
+		<p class="error">La imagen es obligatoria</p>
+		}
+		@if(checkControl("email", "pattern")) {
+		<p class="error">La imagen tiene que ser una url</p>
+		}
+	</div>
+
+	<input type="submit" value="Enviar" class="btn btn-success mt-2" [disabled]="userForm.invalid">
+</form>
