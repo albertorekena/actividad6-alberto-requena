@@ -1,1 +1,29 @@
-<p>user works!</p>
+<article class="h-100 mt-5 row">
+	<div class="col-12 col-md-6">
+		<img [src]="user?.image" class="rounded-circle w-75 mx-auto d-block" [alt]="user?.first_name + ' ' + user?.last_name"/>
+	</div>
+
+	<div class="d-md-none col-12">
+		
+	</div>
+
+	<div class="d-none d-md-block col-md-6 pt-2 ps-5 border-start">
+		<h2 class="h3 fw-normal mb-4">{{user?.first_name}}</h2>
+
+		<h2 class="h3 fw-normal mb-5">{{user?.last_name}}</h2>
+
+		<div class="h5 mb-4">
+			<span class="fw-bold">Nombre Usuario:</span> {{user?.username}}
+		</div>
+
+		<div class="h5 mb-5">
+			<span class="fw-bold">Email:</span> {{user?.email}}
+		</div>
+		
+		<footer class="btn-group">
+			<button (click)="removeUser(user?._id)" class="btn bg-transparent p-3 btn-outline-dark">Eliminar</button>
+			<a [routerLink]="['/updateuser', user?._id]" class="btn bg-transparent p-3 btn-outline-dark">Actualizar</a>
+			<a [routerLink]="['/home']"  type="button" class="btn bg-transparent p-3 btn-outline-dark">Volver al listado</a>
+		</footer>
+	</div>
+</article>

@@ -8,8 +8,8 @@ import {Error404Component} from "./pages/error404/error404.component";
 export const routes:Routes = [
 	{path:"", pathMatch:"full", redirectTo:"home"},
 	{path:"home", component:HomeComponent},
-	{path:"user/:id", component:UserComponent},
+	{path:"user/:_id", component:UserComponent},
 	{path:"newuser", component:NewUserComponent},
-	{path:"updateuser/:id", component:UpdateUserComponent},
+	{path:"updateuser/:_id", component:UpdateUserComponent},
 	{path:"**", component:Error404Component}
 ];

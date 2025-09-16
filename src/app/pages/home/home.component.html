@@ -1,5 +1,5 @@
 <ul class="row g-4 list-unstyled my-5">
-	@for (user of indexReturn?.results; track user._id) {
+	@for (user of iIndex?.results; track user._id) {
 		<li class="col-12 col-xs-6 col-md-4 col-xl-3">
 			<app-card-user [user]="user" />
 		</li>
