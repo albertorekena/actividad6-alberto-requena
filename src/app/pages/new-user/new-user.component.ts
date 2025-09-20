@@ -20,7 +20,7 @@ export class NewUserComponent {
       const response = await this.usersService.store(event);
 
       if (response) {
-        this.router.navigate(['/home']);
+        this.router.navigate(["/home"]);
 
         toast.success("Usuario añadido correctamente.");
       }

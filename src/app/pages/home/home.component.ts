@@ -15,7 +15,7 @@ export class HomeComponent {
 
   async ngOnInit() {
     try {
-      this.iIndex = await this.usersService.index();
+      this.iIndex = await this.usersService.getAll();
     } catch (error:any) {
       console.log(error);
     }

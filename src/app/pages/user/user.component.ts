@@ -18,7 +18,7 @@ export class UserComponent {
 
   async ngOnInit() {
     try {
-      this.user = await this.usersService.show(this._id);
+      this.user = await this.usersService.getById(this._id);
     } catch (error:any) {
       console.log(error);
     }
