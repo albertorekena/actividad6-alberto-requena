@@ -3,6 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {lastValueFrom} from "rxjs";
 import {IIndex} from "../interfaces/iindex";
 import {IUser} from "../interfaces/iuser";
+import {IError} from "../interfaces/ierror";
 
 @Injectable({
   providedIn:"root"
@@ -15,15 +16,19 @@ export class UsersService {
     return lastValueFrom(this.httpClient.get<IIndex>(this.baseUrl));
   }
 
-  getById(_id:string):Promise<IUser> {
+  getById(_id:string):Promise<IUser | IError> {
     return lastValueFrom(this.httpClient.get<IUser>(this.baseUrl + "/" + _id));
   }
 
-  store(user:IUser):Promise<IUser | string> {
+  store(user:IUser):Promise<IUser | IError> {
     return lastValueFrom(this.httpClient.post<IUser>(this.baseUrl, user));
   }
 
-  update(_id:string, user:IUser):Promise<IUser | string> {
+  update(_id:string, user:IUser):Promise<IUser | IError> {
     return lastValueFrom(this.httpClient.put<IUser>(this.baseUrl + "/" + _id, user));
+  }
+
+  delete(_id:string):Promise<IUser | IError> {
+    return lastValueFrom(this.httpClient.delete<IUser>(this.baseUrl + "/" + _id));
   }
 };

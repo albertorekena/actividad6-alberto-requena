@@ -40,7 +40,7 @@ export class FormComponent {
 
     this.user = await this.usersService.getById(_id);
 
-    if (this.user._id) {
+    if ("_id" in this.user) {
       first_name = this.user.first_name;
       last_name = this.user.last_name;
       email = this.user.email;
