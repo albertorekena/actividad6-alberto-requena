@@ -1,6 +1,9 @@
 import {Component, inject} from "@angular/core";
-
+import {Router} from "@angular/router";
+import {UsersService} from "../../services/users.service";
+import {IUser} from "../../interfaces/iuser";
 import {FormComponent} from "../../components/form/form.component";
+import {toast} from "ngx-sonner";
 
 @Component({
   selector:"app-new-user",
@@ -9,13 +12,20 @@ import {FormComponent} from "../../components/form/form.component";
   styleUrl:"./new-user.component.css"
 })
 export class NewUserComponent {
-  // store(user:IUser):Promise<IUser | string> {
-  //   return lastValueFrom(this.httpClient.post<IUser>(this.baseUrl, user));
-  // }
+  usersService = inject(UsersService);
+  router = inject(Router);
 
-  // async getFormData():Promise<IUser | string> {
-  //   const user:IUser | string = await this.usersService.store(this.userForm.value);
+  async saveData(event:IUser):Promise<void> {
+    try {
+      const response = await this.usersService.store(event);
 
-  //   return user;
-  // }
+      if (response) {
+        this.router.navigate(['/home']);
+
+        toast.success("Usuario añadido correctamente.");
+      }
+    } catch (error:any) {
+      console.log(error.error);
+    }
+  }
 };

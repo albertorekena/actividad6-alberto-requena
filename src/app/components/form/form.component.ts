@@ -1,4 +1,4 @@
-import {Component, inject} from "@angular/core";
+import {Component, EventEmitter, inject, Output} from "@angular/core";
 import {ReactiveFormsModule, FormControl, FormGroup, Validators} from "@angular/forms";
 import {UsersService} from "../../services/users.service";
 import {IUser} from "../../interfaces/iuser";
@@ -12,6 +12,9 @@ import {IUser} from "../../interfaces/iuser";
 export class FormComponent {
   userForm:FormGroup;
   usersService = inject(UsersService);
+
+  @Output("formSubmitted")
+  formSubmittedEmitter = new EventEmitter<IUser>();
 
   constructor() {
     this.userForm = new FormGroup({
@@ -38,7 +41,7 @@ export class FormComponent {
     return this.userForm.get(controlName)?.hasError(errorName) && this.userForm.get(controlName)?.touched;
   }
 
-  getFormData():IUser {
-    return this.userForm.value;
+  getFormData():void {
+    this.formSubmittedEmitter.emit(this.userForm.value);
   }
 };
