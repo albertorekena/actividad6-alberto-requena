@@ -6,4 +6,8 @@
 	}
 </ul>
 
-<app-pagination-buttons />
+@if (iUsers?.results?.length == 0) {
+	<p class="mb-4 text-center h6 fw-normal">Parece que no hay usuarios en la base de datos para la url que quieres visitar 🧐</p>
+} @else {
+	<app-pagination-buttons [page]="iUsers?.page ?? 1" [totalPages]="iUsers?.total_pages ?? 1" />
+} 
