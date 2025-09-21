@@ -8,3 +8,11 @@ export interface IUser {
 	image:string;
 	password?:string;
 };
+
+export interface IUsers {
+	page:number;
+  per_page:number;
+  total:number;
+  total_pages:number;
+  results:IUser[];
+};

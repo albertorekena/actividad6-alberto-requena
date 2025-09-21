@@ -55,5 +55,5 @@
 		}
 	</div>
 
-	<input type="submit" value="Guardar" class="btn bg-transparent p-3 btn-outline-dark mt-2" [class.pointer-disabled]="userForm.invalid" [disabled]="userForm.invalid">
+	<input type="submit" [value]="submitButtonText" class="btn bg-transparent p-3 btn-outline-dark mt-2" [class.pointer-disabled]="userForm.invalid" [disabled]="userForm.invalid">
 </form>

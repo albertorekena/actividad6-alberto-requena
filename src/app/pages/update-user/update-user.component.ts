@@ -14,6 +14,7 @@ import {FormComponent} from "../../components/form/form.component";
 export class UpdateUserComponent {
   usersService = inject(UsersService);
   router = inject(Router);
+  submitButtonText:string = "Actualizar";
 
   @Input()
   _id:string = "";

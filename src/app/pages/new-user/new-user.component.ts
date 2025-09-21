@@ -14,6 +14,7 @@ import {toast} from "ngx-sonner";
 export class NewUserComponent {
   usersService = inject(UsersService);
   router = inject(Router);
+  submitButtonText:string = "Guardar";
 
   async saveData(event:IUser):Promise<void> {
     try {
