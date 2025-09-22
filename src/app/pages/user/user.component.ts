@@ -22,8 +22,11 @@ export class UserComponent {
   async ngOnInit() {
     try {
       const result = await this.usersService.getById(this._id);
+
       if ("_id" in result) {
         this.user = result;
+      } else {
+        this.router.navigate(["/error404"]);
       }
     } catch (error:any) {
       console.log(error);
@@ -44,6 +47,8 @@ export class UserComponent {
             const deletedUser = await this.usersService.delete(_id);
 
             if ("_id" in deletedUser) {
+              this.router.navigate(["/home"]);
+
               toast.info("Usuario eliminado correctamente.");
             } else {
               toast.error("El usuario que has querido eliminar no existe.");
